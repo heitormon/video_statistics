@@ -1,6 +1,7 @@
 package br.com.heitor.samba.service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class VideoService {
 		if (difference > 60 || difference < 0)
 			throw new Exception(VideoErrorEnum.INVALID_TIMESTAMP.getValor());
 		videoRepository.save(video);
+	}
+
+	public List<VideoModel> getVideo() {
+		return videoRepository.findAll();
 	}
 
 	public void deleteVideos() {
