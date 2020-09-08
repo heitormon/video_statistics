@@ -17,7 +17,7 @@ public interface VideoRepository extends JpaRepository<VideoModel, Long> {
 			     + "ISNULL(MIN(duration),0) as min,"
 			     + "COUNT(*) as count " 
 			     + "FROM video_info  "
-			     + " WHERE DATEDIFF(SECOND,DATEADD(MS, timestamp, '1970-01-01'),CURRENT_TIMESTAMP) + 10800 < 60"
+			     + " WHERE DATEDIFF(SECOND,DATEADD(MS, timestamp, '1970-01-01'),CURRENT_TIMESTAMP) < 60"
 			     , nativeQuery = true)
 	StatisticsDTO getStatistics();
 
